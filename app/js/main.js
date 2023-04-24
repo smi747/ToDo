@@ -14,9 +14,9 @@ function filt(x) {
       tasks[i].style.display = "flex";
     }
     lastwaschecked = "-1";
-    all_but.classList.add("button_button_active");
-    chckd_but.classList.remove("button_button_active");
-    unchckd_but.classList.remove("button_button_active");
+    all_but.classList.add("button_active");
+    chckd_but.classList.remove("button_active");
+    unchckd_but.classList.remove("button_active");
   }
   if (x == "chckd" || (lastwaschecked == "1" && x == 1)) {
     lastwaschecked = "1";
