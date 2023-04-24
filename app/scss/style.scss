@@ -5,11 +5,16 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+input:focus {
+    outline: none;
+}
+
 
 .section {
     margin: 0 auto;
     margin-top: 30px;
-    width: 550px;
+    max-width: 550px;
+    min-width: 320px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +30,11 @@ body {
     box-sizing: border-box;
 }
 
-.task_div {
+.tasklist {
+    width: 100%;
+}
+
+.task {
     display: flex;
     width: 100%;
     border: 1px solid gray;
@@ -34,13 +43,25 @@ body {
     align-items: center;
 }
 
-.task_list {
-    width: 100%;
-}
-
-.task_text {
+.task__text {
     overflow-x: hidden;
     overflow-wrap: break-word;
+}
+
+.task__del {
+    align-self: stretch;
+    margin-left: auto;
+    cursor: pointer;
+    border: none;
+    padding: 20px;
+    background-color: white;
+    color: gray;
+}
+
+.task__del:hover {
+    background-color: darksalmon;
+    color: white;
+    transition: all 0.3s;
 }
 
 .button {
@@ -67,6 +88,12 @@ body {
     font-size: 14px;
 }
 
+.button_active {
+    background-color:cornflowerblue !important;
+    transition: all 0.3s;
+    color: white;
+}
+
 .button_inex:hover {
     background-color: lightgreen;
     transition: all 0.2s;
@@ -76,38 +103,12 @@ body {
     background-color:darkseagreen;
 }
 
-.active {
-    background-color:cornflowerblue !important;
-    transition: all 0.3s;
-    color: white;
-}
-
-.buttonblock {
+.buttonlist {
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.del_but {
-    align-self: stretch;
-    margin-left: auto;
-    cursor: pointer;
-    border: none;
-    padding: 20px;
-    background-color: white;
-    color: gray;
-}
-
-.del_but:hover {
-    background-color: darksalmon;
-    color: white;
-    transition: all 0.3s;
-}
-
-input:focus {
-    outline: none;
 }
 
 .chckbox {

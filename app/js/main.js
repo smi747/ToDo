@@ -1,15 +1,22 @@
-let tasks = document.querySelector('.task_list').children;
-var lastwaschecked = "-1";
+let tasks = document.querySelector('.tasklist').children;
+let lastwaschecked = "-1";
 
+//Переменная lastwaschecked хранит выбранное состояние сортировки:
+//-1 - all - все
+//0 - unchckd - невыполненные
+//1 - chckd - выполненные
+
+//ф-я filt - отображение заданий с определенным статусом и сокрытие всех остальных; работа со счетчиком невыполненных заданий и обработки состояний чекбоксов. Параметр x: all - все, chckd - выполненные, unchckd - невыполненные,
+//а также 1 - специальное значение аргумента, используемое при смене значения чекбокса завершения задания
 function filt(x) {
   if (x == "all") {
     for (i = 0; i < tasks.length; i++) {
       tasks[i].style.display = "flex";
     }
     lastwaschecked = "-1";
-    all_but.classList.add("active");
-    chckd_but.classList.remove("active");
-    unchckd_but.classList.remove("active");
+    all_but.classList.add("button_button_active");
+    chckd_but.classList.remove("button_button_active");
+    unchckd_but.classList.remove("button_button_active");
   }
   if (x == "chckd" || (lastwaschecked == "1" && x == 1)) {
     lastwaschecked = "1";
@@ -21,9 +28,9 @@ function filt(x) {
         tasks[i].style.display = "flex";
       }
     }
-    all_but.classList.remove("active");
-    chckd_but.classList.add("active");
-    unchckd_but.classList.remove("active");
+    all_but.classList.remove("button_active");
+    chckd_but.classList.add("button_active");
+    unchckd_but.classList.remove("button_active");
   }
   if (x == "unchckd" || (lastwaschecked == "0" && x == 1)) {
     for (i = 0; i < tasks.length; i++) {
@@ -35,11 +42,10 @@ function filt(x) {
       }
     }
     lastwaschecked = "0";
-    all_but.classList.remove("active");
-    chckd_but.classList.remove("active");
-    unchckd_but.classList.add("active");
+    all_but.classList.remove("button_active");
+    chckd_but.classList.remove("button_active");
+    unchckd_but.classList.add("button_active");
   }
-
   if (x == 1) {
     let n = 0;
     for (i = 0; i < tasks.length; i++) {
@@ -47,11 +53,11 @@ function filt(x) {
         n += 1;
       }
     }
-
     counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
   }
 }
 
+//Удаление задачи и обновление счетчика
 function del(x) {
   x.parentNode.remove();
   let n = 0;
@@ -63,11 +69,12 @@ function del(x) {
   counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
 }
  
+//Ввод задачи и обновление счетчика
  inp.addEventListener("keyup", function(event) {
       if (event.key === "Enter") {
         let div = document.createElement('div');
-        div.className = "task_div";
-        div.innerHTML = "<input class='chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task_text'>"+inp.value+"</p>"+"<button class='del_but' onClick='del(this)'>Удалить</button>";
+        div.className = "task";
+        div.innerHTML = "<input class='chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
         inp.value = "";
         if (lastwaschecked == "1") {
           div.style.display = "none";
@@ -80,12 +87,11 @@ function del(x) {
             n += 1;
           }
         }
-
         counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
       }
   });
 
-
+//Если есть невыполненные задачи, то отметить их выполненными, иначе отметить все невыполненными
 function checkall_func() {
   let n = 0;
   for (i = 0; i < tasks.length; i++) {
@@ -99,13 +105,13 @@ function checkall_func() {
           tasks[i].firstChild.checked = true;
     }
   }
- } else {
-  for (i = 0; i < tasks.length; i++) {
+  } else {
     for (i = 0; i < tasks.length; i++) {
-      tasks[i].firstChild.checked = false;
-}
-
+      for (i = 0; i < tasks.length; i++) {
+        tasks[i].firstChild.checked = false;
+      }
+    }
   }
-}
-filt(1);
+//Производим обновление сортировки в соответсвии с обновленными значениями чекбоксов
+  filt(1);
 }

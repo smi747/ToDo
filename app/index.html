@@ -10,14 +10,14 @@
 <body>
     <section class="section">
         <input type="text" class="input" id="inp" placeholder="Введите задачу -> Enter">
-        <div class="task_list" id="task_list">
-            <div class="task_div"><input class="chckbox" type="checkbox" onclick="filt(1)"><p>Сделать кастомные чекбоксы</p><button class="del_but" onclick="del(this)">Удалить</button></div>
-            <div class="task_div" style="display: flex;"><input class="chckbox" type="checkbox" onclick="filt(1)" checked><p>Убедиться в корректной работе счетчика невыполненных заданий</p><button class="del_but" onclick="del(this)">Удалить</button></div>
+        <div class="tasklist" id="task_list">
+            <div class="task"><input class="chckbox" type="checkbox" onclick="filt(1)"><p>Сделать кастомные чекбоксы</p><button class="task__del" onclick="del(this)">Удалить</button></div>
+            <div class="task" style="display: flex;"><input class="chckbox" type="checkbox" onclick="filt(1)" checked><p>Убедиться в корректной работе счетчика невыполненных заданий</p><button class="task__del" onclick="del(this)">Удалить</button></div>
         </div>
         <span class="counter" id="counter">Невыполненных: 1</span>
-        <div class="buttonblock">
+        <div class="buttonlist">
             <button class="button_inex" id="checkall" onClick="checkall_func()">Выполнить/исключить все</button>
-            <button class="button active" id="all_but" onClick="filt('all')">Все</button>
+            <button class="button button_active" id="all_but" onClick="filt('all')">Все</button>
             <button class="button" id="chckd_but" onClick="filt('chckd')">Выполненные</button>
             <button class="button" id="unchckd_but" onClick="filt('unchckd')">Невыполненные</button>
         </div>
