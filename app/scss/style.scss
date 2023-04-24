@@ -1,0 +1,32 @@
+.section {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);;
+}
+
+.input {
+    height: 50px;
+    width: 100%;
+    padding: 0;
+    border: 1px solid gray;
+}
+
+.task_div {
+    width: 100%;
+    border: 1px solid gray;
+    border-top: none;
+    padding: 5px 0;
+}
+
+.task_list {
+    width: 100%;
+}
+
+.active {
+    border: 1px solid red;;
+}

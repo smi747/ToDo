@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+    <section class="section">
+        <input type="text" class="input" id="inp">
+        <div class="task_list" id="task_list">
+
+        </div>
+        <span id="counter">0</span>
+        <button id="checkall" onClick="checkall_func()">Выбрать/иселючить все</button>
+        <button class="active" id="all_but" onClick="filt('all')">All</a>
+        <button id="chckd_but" onClick="filt('chckd')">Checked</a>
+        <button id="unchckd_but" onClick="filt('unchckd')">Unhecked</a>
+    </section>
+    <script src="js/main.min.js"></script>
+</body>
+</html>
