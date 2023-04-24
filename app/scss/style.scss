@@ -1,3 +1,11 @@
+@import 'reset';
+
+body {
+    font-size: 16px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+
 .section {
     margin: 0 auto;
     margin-top: 30px;
@@ -30,6 +38,11 @@
     width: 100%;
 }
 
+.task_text {
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+}
+
 .button {
     cursor: pointer;
     background-color: white;
@@ -51,6 +64,7 @@
     border: 1px solid;
     border-radius: 5px;
     border-color: darkgreen;
+    font-size: 14px;
 }
 
 .button_inex:hover {
@@ -77,6 +91,7 @@
 }
 
 .del_but {
+    align-self: stretch;
     margin-left: auto;
     cursor: pointer;
     border: none;
