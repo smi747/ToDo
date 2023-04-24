@@ -10,23 +10,96 @@
 }
 
 .input {
-    height: 50px;
+    height: 56px;
     width: 100%;
-    padding: 0;
+    padding: 10px;
     border: 1px solid gray;
+    box-sizing: border-box;
 }
 
 .task_div {
+    display: flex;
     width: 100%;
     border: 1px solid gray;
     border-top: none;
-    padding: 5px 0;
+    box-sizing: border-box;
+    align-items: center;
 }
 
 .task_list {
     width: 100%;
 }
 
+.button {
+    cursor: pointer;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid;
+    border-color: darkblue;
+    border-radius: 15px;
+}
+
+.button:hover {
+    background-color:lightsteelblue;
+    transition: all 0.3s;
+}
+
+.button_inex {
+    cursor: pointer;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: darkgreen;
+}
+
+.button_inex:hover {
+    background-color: lightgreen;
+    transition: all 0.2s;
+}
+
+.button_inex:active {
+    background-color:darkseagreen;
+}
+
 .active {
-    border: 1px solid red;;
+    background-color:cornflowerblue !important;
+    transition: all 0.3s;
+    color: white;
+}
+
+.buttonblock {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.del_but {
+    margin-left: auto;
+    cursor: pointer;
+    border: none;
+    padding: 20px;
+    background-color: white;
+    color: gray;
+}
+
+.del_but:hover {
+    background-color: darksalmon;
+    color: white;
+    transition: all 0.3s;
+}
+
+input:focus {
+    outline: none;
+}
+
+.chckbox {
+    height: 20px;
+    margin: 0 10px;
+}
+
+.counter {
+    margin-top: 10px;
 }

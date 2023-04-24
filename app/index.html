@@ -9,15 +9,16 @@
 </head>
 <body>
     <section class="section">
-        <input type="text" class="input" id="inp">
+        <input type="text" class="input" id="inp" placeholder="Введите задачу">
         <div class="task_list" id="task_list">
-
         </div>
-        <span id="counter">0</span>
-        <button id="checkall" onClick="checkall_func()">Выбрать/иселючить все</button>
-        <button class="active" id="all_but" onClick="filt('all')">All</a>
-        <button id="chckd_but" onClick="filt('chckd')">Checked</a>
-        <button id="unchckd_but" onClick="filt('unchckd')">Unhecked</a>
+        <span class="counter" id="counter">Невыполненных: 0</span>
+        <div class="buttonblock">
+            <button class="button_inex" id="checkall" onClick="checkall_func()">Выполнить/исключить все</button>
+            <button class="button active" id="all_but" onClick="filt('all')">Все</button>
+            <button class="button" id="chckd_but" onClick="filt('chckd')">Выполненные</button>
+            <button class="button" id="unchckd_but" onClick="filt('unchckd')">Невыполненные</button>
+        </div>
     </section>
     <script src="js/main.min.js"></script>
 </body>
