@@ -1,1 +1,1 @@
-# ToDo
+# ToDo training project for SnP
