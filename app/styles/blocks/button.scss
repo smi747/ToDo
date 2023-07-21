@@ -3,12 +3,12 @@
   border: 1px solid;
 
   cursor: pointer;
-  background-color: white;
-  border-color: darkblue;
+  background-color: $clr-white;
+  border-color: $clr-darkblue;
   border-radius: 15px;
 
   &:hover {
-    background-color: lightsteelblue;
+    background-color: $clr-lightsteelblue;
     transition: all 0.3s;
   }
 
@@ -17,26 +17,26 @@
     border: 1px solid;
 
     cursor: pointer;
-    background-color: white;
+    background-color: $clr-white;
     border-radius: 5px;
-    border-color: darkgreen;
+    border-color: $clr-darkgreen;
     font-size: 14px;
 
     &:hover {
-      background-color: lightgreen;
+      background-color: $clr-lightgreen;
       transition: all 0.2s;
     }
     &:active {
-      background-color: darkseagreen;
+      background-color: $clr-darkseagreen;
     }
   }
   &_active {
-    background-color: cornflowerblue;
+    background-color: $clr-cornflowerblue;
     transition: all 0.3s;
-    color: white;
+    color: $clr-white;
 
     &:hover {
-      background-color: cornflowerblue;
+      background-color: $clr-cornflowerblue;
     }
   }
 }

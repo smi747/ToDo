@@ -26,7 +26,7 @@ function styles() {
 }
 
 function watching() {
-    watch(['app/styles/style.scss','app/styles/blocks/*'], styles)
+    watch(['app/styles/style.scss','app/styles/_vars.scss','app/styles/blocks/*'], styles)
     watch(['app/js/main.js'], scripts)
     watch(['app/**/*.html']).on('change', browserSync.reload);
 }

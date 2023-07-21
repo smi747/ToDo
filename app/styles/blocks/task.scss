@@ -1,6 +1,6 @@
 .task {
   width: 100%;
-  border: 1px solid gray;
+  border: 1px solid $clr-gray;
   border-top: none;
 
   display: flex;
@@ -21,12 +21,12 @@
 
     align-self: stretch;
     cursor: pointer;
-    background-color: white;
-    color: gray;
+    background-color: $clr-white;
+    color: $clr-gray;
 
     &:hover {
-      background-color: darksalmon;
-      color: white;
+      background-color: $clr-darksalmon;
+      color: $clr-white;
       transition: all 0.3s;
     }
   }
