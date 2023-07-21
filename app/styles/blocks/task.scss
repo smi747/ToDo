@@ -1,0 +1,33 @@
+.task {
+  width: 100%;
+  border: 1px solid gray;
+  border-top: none;
+
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+
+  &__chckbox {
+    margin: 0 10px;
+  }
+  &__text {
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+  }
+  &__del {
+    margin-left: auto;
+    padding: 20px;
+    border: none;
+
+    align-self: stretch;
+    cursor: pointer;
+    background-color: white;
+    color: gray;
+
+    &:hover {
+      background-color: darksalmon;
+      color: white;
+      transition: all 0.3s;
+    }
+  }
+}

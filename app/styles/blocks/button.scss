@@ -1,0 +1,42 @@
+.button {
+  padding: 5px;
+  border: 1px solid;
+
+  cursor: pointer;
+  background-color: white;
+  border-color: darkblue;
+  border-radius: 15px;
+
+  &:hover {
+    background-color: lightsteelblue;
+    transition: all 0.3s;
+  }
+
+  &_inex {
+    padding: 5px;
+    border: 1px solid;
+
+    cursor: pointer;
+    background-color: white;
+    border-radius: 5px;
+    border-color: darkgreen;
+    font-size: 14px;
+
+    &:hover {
+      background-color: lightgreen;
+      transition: all 0.2s;
+    }
+    &:active {
+      background-color: darkseagreen;
+    }
+  }
+  &_active {
+    background-color: cornflowerblue;
+    transition: all 0.3s;
+    color: white;
+
+    &:hover {
+      background-color: cornflowerblue;
+    }
+  }
+}

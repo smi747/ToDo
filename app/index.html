@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="styles/style.min.css">
 </head>
-<body>
-    <section class="section">
-        <input type="text" class="input" id="inp" placeholder="Введите задачу -> Enter">
-        <div class="tasklist" id="task_list">
-            <div class="task"><input class="chckbox" type="checkbox" onclick="filt(1)"><p>Сделать кастомные чекбоксы</p><button class="task__del" onclick="del(this)">Удалить</button></div>
-            <div class="task" style="display: flex;"><input class="chckbox" type="checkbox" onclick="filt(1)" checked><p>Убедиться в корректной работе счетчика невыполненных заданий</p><button class="task__del" onclick="del(this)">Удалить</button></div>
+<body class="body">
+    <section class="section body__section">
+        <input type="text" class="input section__input" id="inp" placeholder="Введите задачу -> Enter">
+        <div class="section__tasklist" id="task_list">
+            <div class="task"><input class="task__chckbox" type="checkbox" onclick="filt(1)"><p>Сделать кастомные чекбоксы</p><button class="task__del" onclick="del(this)">Удалить</button></div>
+            <div class="task" style="display: flex;"><input class="task__chckbox" type="checkbox" onclick="filt(1)" checked><p>Убедиться в корректной работе счетчика невыполненных заданий</p><button class="task__del" onclick="del(this)">Удалить</button></div>
         </div>
-        <span class="counter" id="counter">Невыполненных: 1</span>
-        <div class="buttonlist">
-            <button class="button_inex" id="checkall" onClick="checkall_func()">Выполнить/исключить все</button>
+        <span class="section__counter" id="counter">Невыполненных: 1</span>
+        <div class="section__buttonlist">
+            <button class="button button_inex" id="checkall" onClick="checkall_func()">Выполнить/исключить все</button>
             <button class="button button_active" id="all_but" onClick="filt('all')">Все</button>
             <button class="button" id="chckd_but" onClick="filt('chckd')">Выполненные</button>
             <button class="button" id="unchckd_but" onClick="filt('unchckd')">Невыполненные</button>
