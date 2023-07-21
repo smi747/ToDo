@@ -1,4 +1,4 @@
-let tasks = document.querySelector('.tasklist').children;
+let tasks = document.querySelector('.section__tasklist').children;
 let lastwaschecked = "-1";
 
 //Переменная lastwaschecked хранит выбранное состояние сортировки:
@@ -74,7 +74,7 @@ function del(x) {
       if (event.key === "Enter") {
         let div = document.createElement('div');
         div.className = "task";
-        div.innerHTML = "<input class='chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
+        div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
         inp.value = "";
         if (lastwaschecked == "1") {
           div.style.display = "none";
