@@ -1,2 +1,4 @@
 node_modules/
 package-lock.json
+app/styles/style.min.css
+app/js/main.min.js
