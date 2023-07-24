@@ -7,6 +7,19 @@ else {
   var lastwaschecked = "-1";
 }
 filt(1);
+
+let n = 0;
+Array.from(tasks).forEach(function (element, i, arr) {
+  if (element.firstChild.checked) {
+    n += 1;
+  }
+});
+if (n > 0) {
+  delete_but.style.display = "block";
+}
+else {
+  delete_but.style.display = "none";
+}
 //Переменная lastwaschecked хранит выбранное состояние сортировки:
 //-1 - all - все
 //0 - unchckd - невыполненные
@@ -62,6 +75,12 @@ function filt(x) {
         n += 1;
       }
     });
+    if (n == 0) {
+      delete_but.style.display = "none";
+    }
+    else {
+      delete_but.style.display = "block";
+    }
     counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
   }
 }
@@ -76,6 +95,17 @@ function del(x) {
     }
   });
   counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
+  if (n == 0) {
+    delete_but.style.display = "none";
+  }
+}
+
+function rem_completed() {
+  Array.from(tasks).forEach(function (element, i, arr) {
+    if (element.firstChild.checked) {
+      del(element.firstChild);
+    }
+  });
 }
  
 //Ввод задачи и обновление счетчика
@@ -121,10 +151,12 @@ function checkall_func() {
     Array.from(tasks).forEach(function (element, i, arr) {
       element.firstChild.checked = true;
     });
+    delete_but.style.display = "block";
   } else {
     Array.from(tasks).forEach(function (element, i, arr) {
       element.firstChild.checked = false;
     });
+    delete_but.style.display = "none";
   }
 //Производим обновление сортировки в соответсвии с обновленными значениями чекбоксов
   filt(1);

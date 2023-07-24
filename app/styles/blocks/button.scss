@@ -30,6 +30,13 @@
       background-color: $clr-darkseagreen;
     }
   }
+  &_del {
+    border-color: $clr-red;
+    &:hover {
+      background-color: $clr-darksalmon;
+      color: $clr-white;
+    }
+  }
   &_active {
     background-color: $clr-cornflowerblue;
     transition: all 0.3s;
