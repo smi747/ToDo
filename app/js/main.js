@@ -1,6 +1,12 @@
 let tasks = document.querySelector('.section__tasklist').children;
-let lastwaschecked = "-1";
 
+if (localStorage.getItem('lwc') !== null) {
+  var lastwaschecked = JSON.parse(localStorage.getItem('lwc'));
+}
+else {
+  var lastwaschecked = "-1";
+}
+filt(1);
 //Переменная lastwaschecked хранит выбранное состояние сортировки:
 //-1 - all - все
 //0 - unchckd - невыполненные
@@ -9,17 +15,19 @@ let lastwaschecked = "-1";
 //ф-я filt - отображение заданий с определенным статусом и сокрытие всех остальных; работа со счетчиком невыполненных заданий и обработки состояний чекбоксов. Параметр x: all - все, chckd - выполненные, unchckd - невыполненные,
 //а также 1 - специальное значение аргумента, используемое при смене значения чекбокса завершения задания
 function filt(x) {
-  if (x == "all") {
+  if (x == "all" || (lastwaschecked == "-1" && x == 1)) {
     for (i = 0; i < tasks.length; i++) {
       tasks[i].style.display = "flex";
     }
     lastwaschecked = "-1";
+    localStorage.setItem('lwc', JSON.stringify(lastwaschecked));
     all_but.classList.add("button_active");
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.remove("button_active");
   }
   if (x == "chckd" || (lastwaschecked == "1" && x == 1)) {
     lastwaschecked = "1";
+    localStorage.setItem('lwc', JSON.stringify(lastwaschecked));
     for (i = 0; i < tasks.length; i++) {
       if (!tasks[i].firstChild.checked) {
         tasks[i].style.display = "none";
@@ -42,6 +50,7 @@ function filt(x) {
       }
     }
     lastwaschecked = "0";
+    localStorage.setItem('lwc', JSON.stringify(lastwaschecked));
     all_but.classList.remove("button_active");
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.add("button_active");
