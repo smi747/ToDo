@@ -79,26 +79,33 @@ function del(x) {
 }
  
 //Ввод задачи и обновление счетчика
- inp.addEventListener("keyup", function(event) {
-      if (event.key === "Enter") {
-        let div = document.createElement('div');
-        div.className = "task";
-        div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
-        inp.value = "";
-        if (lastwaschecked == "1") {
-          div.style.display = "none";
-        }
-        task_list.appendChild(div);
-        
-        let n = 0;
-        for (i = 0; i < tasks.length; i++) {
-          if (tasks[i].firstChild.checked) {
-            n += 1;
-          }
-        }
-        counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
-      }
-  });
+function new_task() {
+  let div = document.createElement('div');
+  div.className = "task";
+  div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
+  inp.value = "";
+  if (lastwaschecked == "1") {
+    div.style.display = "none";
+  }
+  task_list.appendChild(div);
+  
+  let n = 0;
+  for (i = 0; i < tasks.length; i++) {
+    if (tasks[i].firstChild.checked) {
+      n += 1;
+    }
+  }
+  counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
+}
+
+inp.addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+    new_task();
+  }
+});
+inp.addEventListener("focusout", function() {
+  new_task();
+});
 
 //Если есть невыполненные задачи, то отметить их выполненными, иначе отметить все невыполненными
 function checkall_func() {
