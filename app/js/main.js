@@ -113,6 +113,7 @@ function new_task() {
   if (inp.value != "") {
     let div = document.createElement('div');
     div.className = "task";
+    div.setAttribute("ondblclick", "edit_task(this)");
     div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
     inp.value = "";
     if (lastwaschecked == "1") {
@@ -138,6 +139,33 @@ inp.addEventListener("keyup", function(event) {
 inp.addEventListener("focusout", function() {
   new_task();
 });
+
+function edit_task(elem) {
+  elem.setAttribute("ondblclick", "");
+
+  let inp_edit = document.createElement('input');
+  let text = elem.getElementsByTagName('p')[0].innerText;
+  inp_edit.setAttribute("type", "text");
+  inp_edit.setAttribute("class", "edit input");
+  inp_edit.value = text;
+
+  elem.appendChild(inp_edit);
+  inp_edit.focus();
+
+  inp_edit.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      inp_edit.blur();
+    }
+  });
+  inp_edit.addEventListener("focusout", function() {
+    elem.getElementsByTagName('p')[0].innerHTML = inp_edit.value;
+    elem.removeChild(elem.lastChild);
+    elem.setAttribute("ondblclick", "edit_task(this)");
+    if (inp_edit.value == "") {
+      del(elem.lastChild);
+    }
+  });
+}
 
 //Если есть невыполненные задачи, то отметить их выполненными, иначе отметить все невыполненными
 function checkall_func() {
