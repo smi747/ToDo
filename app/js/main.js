@@ -7,6 +7,10 @@ else {
   var lastwaschecked = "-1";
 }
 
+if (localStorage.getItem("test") == null) {
+  alert(1);
+  localStorage.setItem("test", JSON.stringify([]));
+}
 
 //localStorage.setItem("test", JSON.stringify(JSON.parse(localStorage.getItem("test")).concat([{a: "проверка", b: true}])));
 //alert(JSON.parse(localStorage.getItem("test"))[0].a);
