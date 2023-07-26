@@ -6,7 +6,51 @@ if (localStorage.getItem('lwc') !== null) {
 else {
   var lastwaschecked = "-1";
 }
+
+
+//localStorage.setItem("test", JSON.stringify(JSON.parse(localStorage.getItem("test")).concat([{a: "проверка", b: true}])));
+//alert(JSON.parse(localStorage.getItem("test"))[0].a);
+
+function tasks_load() {
+  JSON.parse(localStorage.getItem("test")).forEach(function (element, i, arr) {
+    let div = document.createElement('div');
+    div.className = "task";
+    div.setAttribute("ondblclick", "edit_task(this)");
+    if (element.b) {
+      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)' checked>"+"<p class='task__text'>"+element.a+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
+    }
+    else {
+      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+element.a+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
+    }
+    inp.value = "";
+    if (lastwaschecked == "1") {
+      div.style.display = "none";
+    }
+    task_list.appendChild(div);
+    
+    let n = 0;
+    Array.from(tasks).forEach(function (element, i, arr) {
+      if (element.firstChild.checked) {
+        n += 1;
+      }
+    });
+    counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
+  });
+}
+
+tasks_load();
 filt(1);
+
+function tasks_save() {
+  let tmp_tsk_list = [];
+  Array.from(task_list.children).forEach(function (element, i, arr) {
+    let v_1 = element.getElementsByTagName('p')[0].innerText;
+    let v_2 = element.getElementsByTagName('input')[0].checked;
+    tmp_tsk_list.push({a: v_1, b: v_2});
+  });
+  localStorage.setItem("test", JSON.stringify(tmp_tsk_list));
+}
+
 
 let n = 0;
 Array.from(tasks).forEach(function (element, i, arr) {
@@ -83,6 +127,7 @@ function filt(x) {
     }
     counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
   }
+  tasks_save();
 }
 
 //Удаление задачи и обновление счетчика
@@ -98,6 +143,7 @@ function del(x) {
   if (n == 0) {
     delete_but.style.display = "none";
   }
+  tasks_save();
 }
 
 function rem_completed() {
@@ -128,6 +174,7 @@ function new_task() {
       }
     });
     counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
+    tasks_save();
   }
 }
 
@@ -164,6 +211,7 @@ function edit_task(elem) {
     if (inp_edit.value == "") {
       del(elem.lastChild);
     }
+    tasks_save();
   });
 }
 
@@ -188,4 +236,5 @@ function checkall_func() {
   }
 //Производим обновление сортировки в соответсвии с обновленными значениями чекбоксов
   filt(1);
+  tasks_save();
 }
