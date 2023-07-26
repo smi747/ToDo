@@ -1,11 +1,11 @@
 .button {
-  padding: 5px;
+  padding: 4px;
   border: 1px solid;
 
   cursor: pointer;
   background-color: $clr-white;
   border-color: $clr-darkblue;
-  border-radius: 15px;
+  border-radius: 5px;
 
   &:hover {
     background-color: $clr-lightsteelblue;
@@ -13,12 +13,11 @@
   }
 
   &_inex {
-    padding: 5px;
+    padding: 4px;
     border: 1px solid;
 
     cursor: pointer;
     background-color: $clr-white;
-    border-radius: 5px;
     border-color: $clr-darkgreen;
     font-size: 14px;
 
@@ -31,6 +30,7 @@
     }
   }
   &_del {
+    margin-left: auto;
     border-color: $clr-red;
     &:hover {
       background-color: $clr-darksalmon;

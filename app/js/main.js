@@ -38,6 +38,12 @@ function tasks_load() {
         n += 1;
       }
     });
+    if (tasks.length != n || (tasks.length == n && tasks.length == 0)) {
+      checkall.checked = false;
+    }
+    else {
+      checkall.checked = true;
+    }
     counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
   });
 }
@@ -53,6 +59,18 @@ function tasks_save() {
     tmp_tsk_list.push({a: v_1, b: v_2});
   });
   localStorage.setItem("test", JSON.stringify(tmp_tsk_list));
+  let n = 0;
+    Array.from(tasks).forEach(function (element, i, arr) {
+      if (element.firstChild.checked) {
+        n += 1;
+      }
+    });
+    if (tasks.length != n || (tasks.length == n && tasks.length == 0)) {
+      checkall.checked = false;
+    }
+    else {
+      checkall.checked = true;
+    }
 }
 
 
@@ -197,7 +215,7 @@ function edit_task(elem) {
   let inp_edit = document.createElement('input');
   let text = elem.getElementsByTagName('p')[0].innerText;
   inp_edit.setAttribute("type", "text");
-  inp_edit.setAttribute("class", "edit input");
+  inp_edit.setAttribute("class", "input input_edit");
   inp_edit.value = text;
 
   elem.appendChild(inp_edit);

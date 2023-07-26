@@ -7,11 +7,6 @@ input:focus {
 
 @import "blocks/body";
 @import "blocks/section";
+@import "blocks/input";
 @import "blocks/task";
 @import "blocks/button";
-
-.edit {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}

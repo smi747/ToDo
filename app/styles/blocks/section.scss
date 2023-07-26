@@ -15,16 +15,18 @@
     width: 100%;
   }
   &__buttonlist {
+    padding: 0 10px;
+    width: 100%;
     margin: 10px 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
   }
   &__input {
-    padding: 10px;
-    height: 56px;
+    display: flex;
     width: 100%;
     border: 1px solid $clr-gray;
     box-sizing: border-box;
+    align-items: center;
   }
 }
