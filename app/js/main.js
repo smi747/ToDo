@@ -4,10 +4,10 @@ function tasks_load() {
     div.className = "task";
     div.setAttribute("ondblclick", "edit_task(this)");
     if (element.is_checked) {
-      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)' checked>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='del(this.parentElement)'>Удалить</button>";
+      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(lastwaschecked)' checked>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='del(this.parentElement)'>Удалить</button>";
     }
     else {
-      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='del(this.parentElement)'>Удалить</button>";
+      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(lastwaschecked)'>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='del(this.parentElement)'>Удалить</button>";
     }
     task_list.appendChild(div);
   });
@@ -48,57 +48,19 @@ function tasks_save() {
     checkall.checked = true;
   }
 }
-//++++++++++
-let tasks = document.querySelector('.section__tasklist').children;
 
-if (localStorage.getItem('storage_lwc') !== null) {
-  var lastwaschecked = JSON.parse(localStorage.getItem('storage_lwc'));
-}
-else {
-  var lastwaschecked = "-1";
-}
-
-if (localStorage.getItem("storage_tasks") == null) {
-  alert(1);
-  localStorage.setItem("storage_tasks", JSON.stringify([]));
-}
-
-tasks_load();
-filt(1);
-
-let n = 0;
-Array.from(tasks).forEach(function (element, i, arr) {
-  if (element.firstChild.checked) {
-    n += 1;
-  }
-});
-if (n > 0) {
-  delete_but.style.display = "block";
-}
-else {
-  delete_but.style.display = "none";
-}
-//Переменная lastwaschecked хранит выбранное состояние сортировки:
-//-1 - all - все
-//0 - unchckd - невыполненные
-//1 - chckd - выполненные
-
-//ф-я filt - отображение заданий с определенным статусом и сокрытие всех остальных; работа со счетчиком невыполненных заданий и обработки состояний чекбоксов. Параметр x: all - все, chckd - выполненные, unchckd - невыполненные,
-//а также 1 - специальное значение аргумента, используемое при смене значения чекбокса завершения задания
 function filt(x) {
-  if (x == "all" || (lastwaschecked == "-1" && x == 1)) {
+  if (x == "all") {
     Array.from(tasks).forEach(function (element, i, arr) {
       element.style.display = "flex";
     });
-    lastwaschecked = "-1";
+    lastwaschecked = "all";
     localStorage.setItem('storage_lwc', JSON.stringify(lastwaschecked));
     all_but.classList.add("button_active");
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.remove("button_active");
   }
-  if (x == "chckd" || (lastwaschecked == "1" && x == 1)) {
-    lastwaschecked = "1";
-    localStorage.setItem('storage_lwc', JSON.stringify(lastwaschecked));
+  if (x == "chckd") {
     Array.from(tasks).forEach(function (element, i, arr) {
       if (!element.firstChild.checked) {
         element.style.display = "none";
@@ -107,11 +69,13 @@ function filt(x) {
         element.style.display = "flex";
       }
     });
+    lastwaschecked = "chckd";
+    localStorage.setItem('storage_lwc', JSON.stringify(lastwaschecked));
     all_but.classList.remove("button_active");
     chckd_but.classList.add("button_active");
     unchckd_but.classList.remove("button_active");
   }
-  if (x == "unchckd" || (lastwaschecked == "0" && x == 1)) {
+  if (x == "unchckd") {
     Array.from(tasks).forEach(function (element, i, arr) {
       if (element.firstChild.checked) {
         element.style.display = "none";
@@ -120,29 +84,45 @@ function filt(x) {
         element.style.display = "flex";
       }
     });
-    lastwaschecked = "0";
+    lastwaschecked = "unchckd";
     localStorage.setItem('storage_lwc', JSON.stringify(lastwaschecked));
     all_but.classList.remove("button_active");
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.add("button_active");
   }
-  if (x == 1) {
-    let n = 0;
-    Array.from(tasks).forEach(function (element, i, arr) {
-      if (element.firstChild.checked) {
-        n += 1;
-      }
-    });
-    if (n == 0) {
-      delete_but.style.display = "none";
+  let n = 0;
+  Array.from(tasks).forEach(function (element, i, arr) {
+    if (element.firstChild.checked) {
+      n += 1;
     }
-    else {
-      delete_but.style.display = "block";
-    }
-    counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
+  });
+  if (n == 0) {
+    delete_but.style.display = "none";
   }
+  else {
+    delete_but.style.display = "block";
+  }
+  counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
+  
   tasks_save();
 }
+//++++++++++
+let tasks = document.querySelector('.section__tasklist').children;
+
+if (localStorage.getItem('storage_lwc') !== null) {
+  var lastwaschecked = JSON.parse(localStorage.getItem('storage_lwc'));
+}
+else {
+  var lastwaschecked = "all";
+}
+
+if (localStorage.getItem("storage_tasks") == null) {
+  localStorage.setItem("storage_tasks", JSON.stringify([]));
+}
+
+tasks_load();
+filt(lastwaschecked);
+
 
 //Удаление задачи и обновление счетчика
 function del(x) {
@@ -174,9 +154,9 @@ function new_task() {
     let div = document.createElement('div');
     div.className = "task";
     div.setAttribute("ondblclick", "edit_task(this)");
-    div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this.parentElement)'>Удалить</button>";
+    div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(lastwaschecked)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this.parentElement)'>Удалить</button>";
     inp.value = "";
-    if (lastwaschecked == "1") {
+    if (lastwaschecked == "chckd") {
       div.style.display = "none";
     }
     task_list.appendChild(div);
@@ -249,6 +229,6 @@ function checkall_func() {
     delete_but.style.display = "none";
   }
 //Производим обновление сортировки в соответсвии с обновленными значениями чекбоксов
-  filt(1);
+  filt(lastwaschecked);
   tasks_save();
 }
