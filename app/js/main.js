@@ -106,25 +106,7 @@ function filt(x) {
   
   tasks_save();
 }
-//++++++++++
-let tasks = document.querySelector('.section__tasklist').children;
 
-if (localStorage.getItem('storage_lwc') !== null) {
-  var lastwaschecked = JSON.parse(localStorage.getItem('storage_lwc'));
-}
-else {
-  var lastwaschecked = "all";
-}
-
-if (localStorage.getItem("storage_tasks") == null) {
-  localStorage.setItem("storage_tasks", JSON.stringify([]));
-}
-
-tasks_load();
-filt(lastwaschecked);
-
-
-//Удаление задачи и обновление счетчика
 function del(x) {
   x.remove();
   let n = 0;
@@ -147,8 +129,7 @@ function rem_completed() {
     }
   });
 }
- 
-//Ввод задачи и обновление счетчика
+
 function new_task() {
   if (inp.value != "") {
     let div = document.createElement('div');
@@ -171,15 +152,6 @@ function new_task() {
     tasks_save();
   }
 }
-
-inp.addEventListener("keyup", function(event) {
-  if (event.key === "Enter") {
-    new_task();
-  }
-});
-inp.addEventListener("focusout", function() {
-  new_task();
-});
 
 function edit_task(elem) {
   elem.setAttribute("ondblclick", "");
@@ -209,7 +181,6 @@ function edit_task(elem) {
   });
 }
 
-//Если есть невыполненные задачи, то отметить их выполненными, иначе отметить все невыполненными
 function checkall_func() {
   let n = 0;
   Array.from(tasks).forEach(function (element, i, arr) {
@@ -228,7 +199,36 @@ function checkall_func() {
     });
     delete_but.style.display = "none";
   }
-//Производим обновление сортировки в соответсвии с обновленными значениями чекбоксов
+  
   filt(lastwaschecked);
   tasks_save();
 }
+
+
+let tasks = document.querySelector('.section__tasklist').children;
+
+if (localStorage.getItem('storage_lwc') !== null) {
+  var lastwaschecked = JSON.parse(localStorage.getItem('storage_lwc'));
+}
+else {
+  var lastwaschecked = "all";
+}
+
+if (localStorage.getItem("storage_tasks") == null) {
+  localStorage.setItem("storage_tasks", JSON.stringify([]));
+}
+
+tasks_load();
+filt(lastwaschecked);
+
+inp.addEventListener("keyup", function(event) {
+  if (event.key === "Enter") {
+    new_task();
+  }
+});
+inp.addEventListener("focusout", function() {
+  new_task();
+});
+
+
+
