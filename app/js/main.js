@@ -1,78 +1,70 @@
-let tasks = document.querySelector('.section__tasklist').children;
-
-if (localStorage.getItem('lwc') !== null) {
-  var lastwaschecked = JSON.parse(localStorage.getItem('lwc'));
-}
-else {
-  var lastwaschecked = "-1";
-}
-
-if (localStorage.getItem("test") == null) {
-  alert(1);
-  localStorage.setItem("test", JSON.stringify([]));
-}
-
-//localStorage.setItem("test", JSON.stringify(JSON.parse(localStorage.getItem("test")).concat([{a: "проверка", b: true}])));
-//alert(JSON.parse(localStorage.getItem("test"))[0].a);
-
 function tasks_load() {
-  JSON.parse(localStorage.getItem("test")).forEach(function (element, i, arr) {
+  JSON.parse(localStorage.getItem("storage_tasks")).forEach(function (element, i, arr) {
     let div = document.createElement('div');
     div.className = "task";
     div.setAttribute("ondblclick", "edit_task(this)");
-    if (element.b) {
-      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)' checked>"+"<p class='task__text'>"+element.a+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
+    if (element.is_checked) {
+      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)' checked>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='del(this.parentElement)'>Удалить</button>";
     }
     else {
-      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+element.a+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
-    }
-    inp.value = "";
-    if (lastwaschecked == "1") {
-      div.style.display = "none";
+      div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='del(this.parentElement)'>Удалить</button>";
     }
     task_list.appendChild(div);
-    
-    let n = 0;
-    Array.from(tasks).forEach(function (element, i, arr) {
-      if (element.firstChild.checked) {
-        n += 1;
-      }
-    });
-    if (tasks.length != n || (tasks.length == n && tasks.length == 0)) {
-      checkall.checked = false;
-    }
-    else {
-      checkall.checked = true;
-    }
-    counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
   });
+  let n = 0;
+  Array.from(tasks).forEach(function (element, i, arr) {
+    if (element.firstChild.checked) {
+      n += 1;
+    }
+  });
+  if (tasks.length != n || tasks.length == 0) {
+    checkall.checked = false;
+  }
+  else {
+    checkall.checked = true;
+  }
+  counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
 }
-
-tasks_load();
-filt(1);
 
 function tasks_save() {
   let tmp_tsk_list = [];
   Array.from(task_list.children).forEach(function (element, i, arr) {
     let v_1 = element.getElementsByTagName('p')[0].innerText;
     let v_2 = element.getElementsByTagName('input')[0].checked;
-    tmp_tsk_list.push({a: v_1, b: v_2});
+    tmp_tsk_list.push({text_value: v_1, is_checked: v_2});
   });
-  localStorage.setItem("test", JSON.stringify(tmp_tsk_list));
+  localStorage.setItem("storage_tasks", JSON.stringify(tmp_tsk_list));
+
   let n = 0;
-    Array.from(tasks).forEach(function (element, i, arr) {
-      if (element.firstChild.checked) {
-        n += 1;
-      }
-    });
-    if (tasks.length != n || (tasks.length == n && tasks.length == 0)) {
-      checkall.checked = false;
+  Array.from(tasks).forEach(function (element, i, arr) {
+    if (element.firstChild.checked) {
+      n += 1;
     }
-    else {
-      checkall.checked = true;
-    }
+  });
+  if (tasks.length != n || tasks.length == 0) {
+    checkall.checked = false;
+  }
+  else {
+    checkall.checked = true;
+  }
+}
+//++++++++++
+let tasks = document.querySelector('.section__tasklist').children;
+
+if (localStorage.getItem('storage_lwc') !== null) {
+  var lastwaschecked = JSON.parse(localStorage.getItem('storage_lwc'));
+}
+else {
+  var lastwaschecked = "-1";
 }
 
+if (localStorage.getItem("storage_tasks") == null) {
+  alert(1);
+  localStorage.setItem("storage_tasks", JSON.stringify([]));
+}
+
+tasks_load();
+filt(1);
 
 let n = 0;
 Array.from(tasks).forEach(function (element, i, arr) {
@@ -99,14 +91,14 @@ function filt(x) {
       element.style.display = "flex";
     });
     lastwaschecked = "-1";
-    localStorage.setItem('lwc', JSON.stringify(lastwaschecked));
+    localStorage.setItem('storage_lwc', JSON.stringify(lastwaschecked));
     all_but.classList.add("button_active");
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.remove("button_active");
   }
   if (x == "chckd" || (lastwaschecked == "1" && x == 1)) {
     lastwaschecked = "1";
-    localStorage.setItem('lwc', JSON.stringify(lastwaschecked));
+    localStorage.setItem('storage_lwc', JSON.stringify(lastwaschecked));
     Array.from(tasks).forEach(function (element, i, arr) {
       if (!element.firstChild.checked) {
         element.style.display = "none";
@@ -129,7 +121,7 @@ function filt(x) {
       }
     });
     lastwaschecked = "0";
-    localStorage.setItem('lwc', JSON.stringify(lastwaschecked));
+    localStorage.setItem('storage_lwc', JSON.stringify(lastwaschecked));
     all_but.classList.remove("button_active");
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.add("button_active");
@@ -154,7 +146,7 @@ function filt(x) {
 
 //Удаление задачи и обновление счетчика
 function del(x) {
-  x.parentNode.remove();
+  x.remove();
   let n = 0;
   Array.from(tasks).forEach(function (element, i, arr) {
     if (element.firstChild.checked) {
@@ -171,7 +163,7 @@ function del(x) {
 function rem_completed() {
   Array.from(tasks).forEach(function (element, i, arr) {
     if (element.firstChild.checked) {
-      del(element.firstChild);
+      del(element);
     }
   });
 }
@@ -182,7 +174,7 @@ function new_task() {
     let div = document.createElement('div');
     div.className = "task";
     div.setAttribute("ondblclick", "edit_task(this)");
-    div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this)'>Удалить</button>";
+    div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(1)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='del(this.parentElement)'>Удалить</button>";
     inp.value = "";
     if (lastwaschecked == "1") {
       div.style.display = "none";
@@ -231,7 +223,7 @@ function edit_task(elem) {
     elem.removeChild(elem.lastChild);
     elem.setAttribute("ondblclick", "edit_task(this)");
     if (inp_edit.value == "") {
-      del(elem.lastChild);
+      del(elem);
     }
     tasks_save();
   });
