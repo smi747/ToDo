@@ -11,12 +11,7 @@ function tasks_load() {
     }
     task_list.appendChild(div);
   });
-  let n = 0;
-  Array.from(tasks).forEach(function (element, i, arr) {
-    if (element.firstChild.checked) {
-      n += 1;
-    }
-  });
+  let n = lefted_quantity();
   if (tasks.length != n || tasks.length == 0) {
     checkall.checked = false;
   }
@@ -35,12 +30,7 @@ function tasks_save() {
   });
   localStorage.setItem("storage_tasks", JSON.stringify(tmp_tsk_list));
 
-  let n = 0;
-  Array.from(tasks).forEach(function (element, i, arr) {
-    if (element.firstChild.checked) {
-      n += 1;
-    }
-  });
+  let n = lefted_quantity();
   if (tasks.length != n || tasks.length == 0) {
     checkall.checked = false;
   }
@@ -90,12 +80,7 @@ function filt(x) {
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.add("button_active");
   }
-  let n = 0;
-  Array.from(tasks).forEach(function (element, i, arr) {
-    if (element.firstChild.checked) {
-      n += 1;
-    }
-  });
+  let n = lefted_quantity();
   if (n == 0) {
     delete_but.style.display = "none";
   }
@@ -109,12 +94,7 @@ function filt(x) {
 
 function del(x) {
   x.remove();
-  let n = 0;
-  Array.from(tasks).forEach(function (element, i, arr) {
-    if (element.firstChild.checked) {
-      n += 1;
-    }
-  });
+  let n = lefted_quantity();
   counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
   if (n == 0) {
     delete_but.style.display = "none";
@@ -182,12 +162,7 @@ function edit_task(elem) {
 }
 
 function checkall_func() {
-  let n = 0;
-  Array.from(tasks).forEach(function (element, i, arr) {
-    if (element.firstChild.checked) {
-      n += 1;
-    }
-  });
+  let n = lefted_quantity();
   if (n != tasks.length) {
     Array.from(tasks).forEach(function (element, i, arr) {
       element.firstChild.checked = true;
@@ -204,6 +179,15 @@ function checkall_func() {
   tasks_save();
 }
 
+function lefted_quantity() {
+  let n = 0;
+  Array.from(tasks).forEach(function (element, i, arr) {
+    if (element.firstChild.checked) {
+      n += 1;
+    }
+  });
+  return n;
+}
 
 let tasks = document.querySelector('.section__tasklist').children;
 
