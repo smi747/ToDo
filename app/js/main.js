@@ -205,14 +205,25 @@ if (localStorage.getItem("storage_tasks") == null) {
 tasks_load();
 filt(lastwaschecked);
 
+
+let is_mouse_on_buttonlist = false;
+buttonlist.addEventListener('mouseover', function(event){
+    is_mouse_on_buttonlist = true;
+});
+buttonlist.addEventListener('mouseleave', function(event){
+  is_mouse_on_buttonlist = false;
+});
+
 inp.addEventListener("keyup", function(event) {
   if (event.key === "Enter") {
     new_task();
   }
 });
 inp.addEventListener("focusout", function() {
-  new_task();
+  if (is_mouse_on_buttonlist == false) {
+    new_task();
+  }
+  else {
+    inp.focus();
+  }
 });
-
-
-
