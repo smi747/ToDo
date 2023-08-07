@@ -9,7 +9,7 @@ const clean = require('gulp-clean');
 
 function scripts() {
     return src([
-        'app/js/main.js'
+        'app/js/functions/**', 'app/js/main.js'
     ])
         .pipe(concat('main.min.js'))
         .pipe(uglify())
@@ -27,7 +27,7 @@ function styles() {
 
 function watching() {
     watch(['app/styles/style.scss','app/styles/_vars.scss','app/styles/blocks/**'], styles)
-    watch(['app/js/main.js'], scripts)
+    watch(['app/js/main.js', 'app/js/functions/**'], scripts)
     watch(['app/**/*.html']).on('change', browserSync.reload);
 }
 
