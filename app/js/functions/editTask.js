@@ -1,12 +1,11 @@
 function editTask(editedTask) {
-  editedTask.setAttribute("ondblclick", "");
-
   const editingInputElement = document.createElement('input');
   const editedText = editedTask.getElementsByTagName('p')[0].innerText;
   editingInputElement.setAttribute("type", "text");
   editingInputElement.setAttribute("class", "input input_edit");
   editingInputElement.value = editedText;
 
+  editedTask.setAttribute("ondblclick", "");
   editedTask.appendChild(editingInputElement);
   editingInputElement.focus();
 

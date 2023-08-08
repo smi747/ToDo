@@ -1,5 +1,14 @@
 const taskList = document.querySelector('.section__tasklist').children;
 
+const inputField = document.getElementById('input_field');
+const taskListElem = document.getElementById('task_list');
+const counter = document.getElementById('counter_elem');
+const deleteButton = document.getElementById('delete_but');
+const selectAllButton = document.getElementById('all_but');
+const selectCheckedButton = document.getElementById('chckd_but');
+const selectUncheckedButton = document.getElementById('unchckd_but');
+const checkAll = document.getElementById('checkall');
+
 let lastFilterValue = "all";
 if (localStorage.getItem('storage_filter') !== null) {
   lastFilterValue = JSON.parse(localStorage.getItem('storage_filter'));

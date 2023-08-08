@@ -4,12 +4,12 @@ function checkAllTasks() {
     Array.from(taskList).forEach(function (task, i, arr) {
       task.firstChild.checked = true;
     });
-    delete_but.style.display = "block";
+    deleteButton.style.display = "block";
   } else {
     Array.from(taskList).forEach(function (task, i, arr) {
       task.firstChild.checked = false;
     });
-    delete_but.style.display = "none";
+    deleteButton.style.display = "none";
   }
   
   filterTasks(lastFilterValue);

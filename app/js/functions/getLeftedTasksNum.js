@@ -5,5 +5,6 @@ function getLeftedTasksNum() {
       numOfLeftedTasks += 1;
     }
   });
+  
   return numOfLeftedTasks;
 }
