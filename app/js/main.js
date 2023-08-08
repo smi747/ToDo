@@ -1,4 +1,4 @@
-const tasks = document.querySelector('.section__tasklist').children;
+const taskList = document.querySelector('.section__tasklist').children;
 
 let lastFilterValue = "all";
 if (localStorage.getItem('storage_lwc') !== null) {

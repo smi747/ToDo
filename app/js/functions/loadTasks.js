@@ -12,6 +12,6 @@ function loadTasks() {
   });
 
   const numOfLeftedTasks = getLeftedTasksNum();
-  checkall.checked = !(tasks.length != numOfLeftedTasks || tasks.length == 0);
-  counter.innerText = "Невыполненных: " + (tasks.length-numOfLeftedTasks).toString();
+  checkall.checked = !(taskList.length != numOfLeftedTasks || taskList.length == 0);
+  counter.innerText = "Невыполненных: " + (taskList.length-numOfLeftedTasks).toString();
 }

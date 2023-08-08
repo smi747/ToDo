@@ -8,5 +8,5 @@ function saveTasks() {
   localStorage.setItem("storage_tasks", JSON.stringify(temporaryTaskList));
 
   const numOfLeftedTasks = getLeftedTasksNum();
-  checkall.checked = !(tasks.length != numOfLeftedTasks || tasks.length == 0);
+  checkall.checked = !(taskList.length != numOfLeftedTasks || taskList.length == 0);
 }

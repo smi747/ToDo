@@ -1,6 +1,6 @@
 function filterTasks(x) {
   if (x == "all") {
-    Array.from(tasks).forEach(function (element, i, arr) {
+    Array.from(taskList).forEach(function (element, i, arr) {
       element.style.display = "flex";
     });
     lastFilterValue = "all";
@@ -10,7 +10,7 @@ function filterTasks(x) {
     unchckd_but.classList.remove("button_active");
   }
   if (x == "chckd") {
-    Array.from(tasks).forEach(function (element, i, arr) {
+    Array.from(taskList).forEach(function (element, i, arr) {
       element.style.display = (element.firstChild.checked) ? "flex" : "none";
     });
     lastFilterValue = "chckd";
@@ -20,7 +20,7 @@ function filterTasks(x) {
     unchckd_but.classList.remove("button_active");
   }
   if (x == "unchckd") {
-    Array.from(tasks).forEach(function (element, i, arr) {
+    Array.from(taskList).forEach(function (element, i, arr) {
       element.style.display = (element.firstChild.checked) ? "none" : "flex";
     });
     lastFilterValue = "unchckd";
@@ -31,7 +31,7 @@ function filterTasks(x) {
   }
   const numOfLeftedTasks = getLeftedTasksNum();
   delete_but.style.display = (numOfLeftedTasks == 0) ? "none" : "block";
-  counter.innerText = "Невыполненных: " + (tasks.length-numOfLeftedTasks).toString();
+  counter.innerText = "Невыполненных: " + (taskList.length-numOfLeftedTasks).toString();
   
   saveTasks();
 }

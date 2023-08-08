@@ -13,6 +13,6 @@ function createTask() {
   task_list.appendChild(newTask);
   
   let numOfLeftedTasks = getLeftedTasksNum();
-  counter.innerText = "Невыполненных: " + (tasks.length-numOfLeftedTasks).toString();
+  counter.innerText = "Невыполненных: " + (taskList.length-numOfLeftedTasks).toString();
   saveTasks();
 }
