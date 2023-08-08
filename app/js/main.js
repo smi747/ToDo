@@ -10,7 +10,7 @@ if (localStorage.getItem("storage_tasks") == null) {
 }
 
 loadTasks();
-filt(lastwaschecked);
+filterTasks(lastwaschecked);
 
 let is_mouse_on_buttonlist = false;
 buttonlist.addEventListener('mouseover', function(event){

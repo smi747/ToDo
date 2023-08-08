@@ -5,8 +5,8 @@ function loadTasks() {
     div.setAttribute("ondblclick", "editTask(this)");
 
     div.innerHTML = (element.is_checked) ?
-    "<input class='task__chckbox' type='checkbox' onClick='filt(lastwaschecked)' checked>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='onDeleteItem(this.parentElement)'>Удалить</button>"
-    : "<input class='task__chckbox' type='checkbox' onClick='filt(lastwaschecked)'>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='onDeleteItem(this.parentElement)'>Удалить</button>";
+    "<input class='task__chckbox' type='checkbox' onClick='filterTasks(lastwaschecked)' checked>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='onDeleteItem(this.parentElement)'>Удалить</button>"
+    : "<input class='task__chckbox' type='checkbox' onClick='filterTasks(lastwaschecked)'>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='onDeleteItem(this.parentElement)'>Удалить</button>";
     
     task_list.appendChild(div);
   });

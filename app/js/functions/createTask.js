@@ -5,7 +5,7 @@ function createTask() {
   const div = document.createElement('div');
   div.className = "task";
   div.setAttribute("ondblclick", "editTask(this)");
-  div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filt(lastwaschecked)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='onDeleteItem(this.parentElement)'>Удалить</button>";
+  div.innerHTML = "<input class='task__chckbox' type='checkbox' onClick='filterTasks(lastwaschecked)'>"+"<p class='task__text'>"+inp.value+"</p>"+"<button class='task__del' onClick='onDeleteItem(this.parentElement)'>Удалить</button>";
   inp.value = "";
   if (lastwaschecked == "chckd") {
     div.style.display = "none";

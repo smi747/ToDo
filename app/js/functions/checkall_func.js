@@ -12,6 +12,6 @@ function checkall_func() {
     delete_but.style.display = "none";
   }
   
-  filt(lastwaschecked);
+  filterTasks(lastwaschecked);
   saveTasks();
 }

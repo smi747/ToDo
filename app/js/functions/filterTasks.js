@@ -1,4 +1,4 @@
-function filt(x) {
+function filterTasks(x) {
   if (x == "all") {
     Array.from(tasks).forEach(function (element, i, arr) {
       element.style.display = "flex";
