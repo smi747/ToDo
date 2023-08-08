@@ -1,5 +1,5 @@
-function filterTasks(x) {
-  if (x == "all") {
+function filterTasks(filterType) {
+  if (filterType == "all") {
     Array.from(taskList).forEach(function (task, i, arr) {
       task.style.display = "flex";
     });
@@ -10,7 +10,7 @@ function filterTasks(x) {
     selectUncheckedButton.classList.remove("button_active");
   }
 
-  if (x == "chckd") {
+  if (filterType == "chckd") {
     Array.from(taskList).forEach(function (task, i, arr) {
       task.style.display = (task.firstChild.checked) ? "flex" : "none";
     });
@@ -21,7 +21,7 @@ function filterTasks(x) {
     selectUncheckedButton.classList.remove("button_active");
   }
 
-  if (x == "unchckd") {
+  if (filterType == "unchckd") {
     Array.from(taskList).forEach(function (task, i, arr) {
       task.style.display = (task.firstChild.checked) ? "none" : "flex";
     });
@@ -31,7 +31,7 @@ function filterTasks(x) {
     selectCheckedButton.classList.remove("button_active");
     selectUncheckedButton.classList.add("button_active");
   }
-  
+
   const numOfLeftedTasks = getLeftedTasksNum();
   deleteButton.style.display = (numOfLeftedTasks == 0) ? "none" : "block";
   counter.innerText = "Невыполненных: " + (taskList.length-numOfLeftedTasks).toString();
