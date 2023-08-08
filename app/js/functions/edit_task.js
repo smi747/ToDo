@@ -20,7 +20,7 @@ function edit_task(elem) {
     elem.removeChild(elem.lastChild);
     elem.setAttribute("ondblclick", "edit_task(this)");
     if (inp_edit.value == "") {
-      del(elem);
+      onDeleteItem(elem);
     }
     tasks_save();
   });

@@ -1,4 +1,4 @@
-function del(x) {
+function onDeleteItem(x) {
   x.remove();
   const n = lefted_quantity();
   counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
