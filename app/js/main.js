@@ -1,8 +1,8 @@
 const tasks = document.querySelector('.section__tasklist').children;
 
-let lastwaschecked = "all";
+let lastFilterValue = "all";
 if (localStorage.getItem('storage_lwc') !== null) {
-  lastwaschecked = JSON.parse(localStorage.getItem('storage_lwc'));
+  lastFilterValue = JSON.parse(localStorage.getItem('storage_lwc'));
 }
 
 if (localStorage.getItem("storage_tasks") == null) {
@@ -10,14 +10,14 @@ if (localStorage.getItem("storage_tasks") == null) {
 }
 
 loadTasks();
-filterTasks(lastwaschecked);
+filterTasks(lastFilterValue);
 
-let is_mouse_on_buttonlist = false;
+let isMouseOnButtonlist = false;
 buttonlist.addEventListener('mouseover', function(event){
-  is_mouse_on_buttonlist = true;
+  isMouseOnButtonlist = true;
 });
 buttonlist.addEventListener('mouseleave', function(event){
-  is_mouse_on_buttonlist = false;
+  isMouseOnButtonlist = false;
 });
 
 inp.addEventListener("keyup", function(event) {
@@ -26,5 +26,5 @@ inp.addEventListener("keyup", function(event) {
   }
 });
 inp.addEventListener("focusout", function() {
-  (is_mouse_on_buttonlist) ? inp.focus() : createTask();
+  (isMouseOnButtonlist) ? inp.focus() : createTask();
 });

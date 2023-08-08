@@ -1,25 +1,25 @@
-function editTask(elem) {
-  elem.setAttribute("ondblclick", "");
+function editTask(editedTask) {
+  editedTask.setAttribute("ondblclick", "");
 
-  const inp_edit = document.createElement('input');
-  const text = elem.getElementsByTagName('p')[0].innerText;
-  inp_edit.setAttribute("type", "text");
-  inp_edit.setAttribute("class", "input input_edit");
-  inp_edit.value = text;
+  const editingInputElement = document.createElement('input');
+  const editedText = editedTask.getElementsByTagName('p')[0].innerText;
+  editingInputElement.setAttribute("type", "text");
+  editingInputElement.setAttribute("class", "input input_edit");
+  editingInputElement.value = editedText;
 
-  elem.appendChild(inp_edit);
-  inp_edit.focus();
+  editedTask.appendChild(editingInputElement);
+  editingInputElement.focus();
 
-  inp_edit.addEventListener("keyup", function(event) {
+  editingInputElement.addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
-      inp_edit.blur();
+      editingInputElement.blur();
     }
   });
-  inp_edit.addEventListener("focusout", function() {
-    elem.getElementsByTagName('p')[0].innerHTML = inp_edit.value;
-    elem.removeChild(elem.lastChild);
-    elem.setAttribute("ondblclick", "editTask(this)");
-    if (inp_edit.value == "") {
+  editingInputElement.addEventListener("focusout", function() {
+    editedTask.getElementsByTagName('p')[0].innerHTML = editingInputElement.value;
+    editedTask.removeChild(editedTask.lastChild);
+    editedTask.setAttribute("ondblclick", "editTask(this)");
+    if (editingInputElement.value == "") {
       onDeleteItem(elem);
     }
     saveTasks();

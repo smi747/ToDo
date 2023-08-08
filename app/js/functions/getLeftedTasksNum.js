@@ -1,9 +1,9 @@
 function getLeftedTasksNum() {
-  let n = 0;
+  let numOfLeftedTasks = 0;
   Array.from(tasks).forEach(function (element, i, arr) {
     if (element.firstChild.checked) {
-      n += 1;
+      numOfLeftedTasks += 1;
     }
   });
-  return n;
+  return numOfLeftedTasks;
 }

@@ -1,6 +1,6 @@
 function checkAllTasks() {
-  const n = getLeftedTasksNum();
-  if (n != tasks.length) {
+  const numOfLeftedTasks = getLeftedTasksNum();
+  if (numOfLeftedTasks != tasks.length) {
     Array.from(tasks).forEach(function (element, i, arr) {
       element.firstChild.checked = true;
     });
@@ -12,6 +12,6 @@ function checkAllTasks() {
     delete_but.style.display = "none";
   }
   
-  filterTasks(lastwaschecked);
+  filterTasks(lastFilterValue);
   saveTasks();
 }

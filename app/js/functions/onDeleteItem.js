@@ -1,8 +1,8 @@
-function onDeleteItem(x) {
-  x.remove();
-  const n = getLeftedTasksNum();
-  counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
-  if (n == 0) {
+function onDeleteItem(itemToDelete) {
+  itemToDelete.remove();
+  const numOfLeftedTasks = getLeftedTasksNum();
+  counter.innerText = "Невыполненных: " + (tasks.length-numOfLeftedTasks).toString();
+  if (numOfLeftedTasks == 0) {
     delete_but.style.display = "none";
   }
   saveTasks();
