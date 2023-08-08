@@ -1,4 +1,4 @@
-function tasks_save() {
+function saveTasks() {
   const tmp_tsk_list = [];
   Array.from(task_list.children).forEach(function (element, i, arr) {
     const v_1 = element.getElementsByTagName('p')[0].innerText;

@@ -19,5 +19,5 @@ function new_task() {
     }
   });
   counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
-  tasks_save();
+  saveTasks();
 }

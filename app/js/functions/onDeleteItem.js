@@ -5,5 +5,5 @@ function onDeleteItem(x) {
   if (n == 0) {
     delete_but.style.display = "none";
   }
-  tasks_save();
+  saveTasks();
 }

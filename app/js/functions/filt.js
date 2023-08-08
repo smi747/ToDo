@@ -33,5 +33,5 @@ function filt(x) {
   delete_but.style.display = (n == 0) ? "none" : "block";
   counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
   
-  tasks_save();
+  saveTasks();
 }

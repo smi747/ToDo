@@ -13,5 +13,5 @@ function checkall_func() {
   }
   
   filt(lastwaschecked);
-  tasks_save();
+  saveTasks();
 }

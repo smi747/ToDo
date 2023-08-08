@@ -22,6 +22,6 @@ function edit_task(elem) {
     if (inp_edit.value == "") {
       onDeleteItem(elem);
     }
-    tasks_save();
+    saveTasks();
   });
 }
