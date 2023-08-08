@@ -17,13 +17,13 @@ buttonlist.addEventListener('mouseleave', function(event){
   isMouseOnButtonlist = false;
 });
 
-inp.addEventListener("keyup", function(event) {
+input_field.addEventListener("keyup", function(event) {
   if (event.key === "Enter") {
     createTask();
   }
 });
-inp.addEventListener("focusout", function() {
-  (isMouseOnButtonlist) ? inp.focus() : createTask();
+input_field.addEventListener("focusout", function() {
+  (isMouseOnButtonlist) ? input_field.focus() : createTask();
 });
 
 loadTasks();
