@@ -20,7 +20,7 @@ function editTask(editedTask) {
     editedTask.removeChild(editedTask.lastChild);
     editedTask.setAttribute("ondblclick", "editTask(this)");
     if (editingInputElement.value == "") {
-      onDeleteItem(elem);
+      onDeleteItem(editedTask);
     }
     saveTasks();
   });

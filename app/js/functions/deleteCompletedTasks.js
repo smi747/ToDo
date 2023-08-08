@@ -1,7 +1,7 @@
 function deleteCompletedTasks() {
-  Array.from(taskList).forEach(function (element, i, arr) {
-    if (element.firstChild.checked) {
-      onDeleteItem(element);
+  Array.from(taskList).forEach(function (task, i, arr) {
+    if (task.firstChild.checked) {
+      onDeleteItem(task);
     }
   });
 }
