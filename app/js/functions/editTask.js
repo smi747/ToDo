@@ -1,4 +1,4 @@
-function edit_task(elem) {
+function editTask(elem) {
   elem.setAttribute("ondblclick", "");
 
   const inp_edit = document.createElement('input');
@@ -18,7 +18,7 @@ function edit_task(elem) {
   inp_edit.addEventListener("focusout", function() {
     elem.getElementsByTagName('p')[0].innerHTML = inp_edit.value;
     elem.removeChild(elem.lastChild);
-    elem.setAttribute("ondblclick", "edit_task(this)");
+    elem.setAttribute("ondblclick", "editTask(this)");
     if (inp_edit.value == "") {
       onDeleteItem(elem);
     }

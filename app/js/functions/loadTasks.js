@@ -2,7 +2,7 @@ function loadTasks() {
   JSON.parse(localStorage.getItem("storage_tasks")).forEach(function (element, i, arr) {
     const div = document.createElement('div');
     div.className = "task";
-    div.setAttribute("ondblclick", "edit_task(this)");
+    div.setAttribute("ondblclick", "editTask(this)");
 
     div.innerHTML = (element.is_checked) ?
     "<input class='task__chckbox' type='checkbox' onClick='filt(lastwaschecked)' checked>"+"<p class='task__text'>"+element.text_value+"</p>"+"<button class='task__del' onClick='onDeleteItem(this.parentElement)'>Удалить</button>"
