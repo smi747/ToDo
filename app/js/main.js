@@ -26,10 +26,5 @@ inp.addEventListener("keyup", function(event) {
   }
 });
 inp.addEventListener("focusout", function() {
-  if (is_mouse_on_buttonlist == false) {
-    new_task();
-  }
-  else {
-    inp.focus();
-  }
+  (is_mouse_on_buttonlist) ? inp.focus() : new_task();
 });

@@ -8,10 +8,5 @@ function tasks_save() {
   localStorage.setItem("storage_tasks", JSON.stringify(tmp_tsk_list));
 
   const n = lefted_quantity();
-  if (tasks.length != n || tasks.length == 0) {
-    checkall.checked = false;
-  }
-  else {
-    checkall.checked = true;
-  }
+  checkall.checked = !(tasks.length != n || tasks.length == 0);
 }

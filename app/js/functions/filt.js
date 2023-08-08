@@ -11,12 +11,7 @@ function filt(x) {
   }
   if (x == "chckd") {
     Array.from(tasks).forEach(function (element, i, arr) {
-      if (!element.firstChild.checked) {
-        element.style.display = "none";
-      }
-      else {
-        element.style.display = "flex";
-      }
+      element.style.display = (element.firstChild.checked) ? "flex" : "none";
     });
     lastwaschecked = "chckd";
     localStorage.setItem('storage_lwc', JSON.stringify(lastwaschecked));
@@ -26,12 +21,7 @@ function filt(x) {
   }
   if (x == "unchckd") {
     Array.from(tasks).forEach(function (element, i, arr) {
-      if (element.firstChild.checked) {
-        element.style.display = "none";
-      }
-      else {
-        element.style.display = "flex";
-      }
+      element.style.display = (element.firstChild.checked) ? "none" : "flex";
     });
     lastwaschecked = "unchckd";
     localStorage.setItem('storage_lwc', JSON.stringify(lastwaschecked));
@@ -40,12 +30,7 @@ function filt(x) {
     unchckd_but.classList.add("button_active");
   }
   const n = lefted_quantity();
-  if (n == 0) {
-    delete_but.style.display = "none";
-  }
-  else {
-    delete_but.style.display = "block";
-  }
+  delete_but.style.display = (n == 0) ? "none" : "block";
   counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
   
   tasks_save();
