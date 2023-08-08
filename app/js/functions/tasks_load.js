@@ -1,6 +1,6 @@
 function tasks_load() {
   JSON.parse(localStorage.getItem("storage_tasks")).forEach(function (element, i, arr) {
-    let div = document.createElement('div');
+    const div = document.createElement('div');
     div.className = "task";
     div.setAttribute("ondblclick", "edit_task(this)");
     if (element.is_checked) {
@@ -11,7 +11,7 @@ function tasks_load() {
     }
     task_list.appendChild(div);
   });
-  let n = lefted_quantity();
+  const n = lefted_quantity();
   if (tasks.length != n || tasks.length == 0) {
     checkall.checked = false;
   }

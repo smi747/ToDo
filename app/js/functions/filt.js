@@ -39,7 +39,7 @@ function filt(x) {
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.add("button_active");
   }
-  let n = lefted_quantity();
+  const n = lefted_quantity();
   if (n == 0) {
     delete_but.style.display = "none";
   }

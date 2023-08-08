@@ -1,5 +1,5 @@
 function checkall_func() {
-  let n = lefted_quantity();
+  const n = lefted_quantity();
   if (n != tasks.length) {
     Array.from(tasks).forEach(function (element, i, arr) {
       element.firstChild.checked = true;

@@ -1,10 +1,8 @@
-let tasks = document.querySelector('.section__tasklist').children;
+const tasks = document.querySelector('.section__tasklist').children;
 
+let lastwaschecked = "all";
 if (localStorage.getItem('storage_lwc') !== null) {
-  var lastwaschecked = JSON.parse(localStorage.getItem('storage_lwc'));
-}
-else {
-  var lastwaschecked = "all";
+  lastwaschecked = JSON.parse(localStorage.getItem('storage_lwc'));
 }
 
 if (localStorage.getItem("storage_tasks") == null) {
@@ -14,10 +12,9 @@ if (localStorage.getItem("storage_tasks") == null) {
 tasks_load();
 filt(lastwaschecked);
 
-
 let is_mouse_on_buttonlist = false;
 buttonlist.addEventListener('mouseover', function(event){
-    is_mouse_on_buttonlist = true;
+  is_mouse_on_buttonlist = true;
 });
 buttonlist.addEventListener('mouseleave', function(event){
   is_mouse_on_buttonlist = false;
