@@ -4,7 +4,7 @@ function filterTasks(x) {
       element.style.display = "flex";
     });
     lastFilterValue = "all";
-    localStorage.setItem('storage_lwc', JSON.stringify(lastFilterValue));
+    localStorage.setItem('storage_filter', JSON.stringify(lastFilterValue));
     all_but.classList.add("button_active");
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.remove("button_active");
@@ -14,7 +14,7 @@ function filterTasks(x) {
       element.style.display = (element.firstChild.checked) ? "flex" : "none";
     });
     lastFilterValue = "chckd";
-    localStorage.setItem('storage_lwc', JSON.stringify(lastFilterValue));
+    localStorage.setItem('storage_filter', JSON.stringify(lastFilterValue));
     all_but.classList.remove("button_active");
     chckd_but.classList.add("button_active");
     unchckd_but.classList.remove("button_active");
@@ -24,7 +24,7 @@ function filterTasks(x) {
       element.style.display = (element.firstChild.checked) ? "none" : "flex";
     });
     lastFilterValue = "unchckd";
-    localStorage.setItem('storage_lwc', JSON.stringify(lastFilterValue));
+    localStorage.setItem('storage_filter', JSON.stringify(lastFilterValue));
     all_but.classList.remove("button_active");
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.add("button_active");

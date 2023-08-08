@@ -1,8 +1,8 @@
 const taskList = document.querySelector('.section__tasklist').children;
 
 let lastFilterValue = "all";
-if (localStorage.getItem('storage_lwc') !== null) {
-  lastFilterValue = JSON.parse(localStorage.getItem('storage_lwc'));
+if (localStorage.getItem('storage_filter') !== null) {
+  lastFilterValue = JSON.parse(localStorage.getItem('storage_filter'));
 }
 
 if (localStorage.getItem("storage_tasks") == null) {
