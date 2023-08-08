@@ -1,4 +1,4 @@
-function checkall_func() {
+function checkAllTasks() {
   const n = getLeftedTasksNum();
   if (n != tasks.length) {
     Array.from(tasks).forEach(function (element, i, arr) {
