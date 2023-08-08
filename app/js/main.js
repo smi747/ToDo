@@ -9,7 +9,7 @@ if (localStorage.getItem("storage_tasks") == null) {
   localStorage.setItem("storage_tasks", JSON.stringify([]));
 }
 
-tasks_load();
+loadTasks();
 filt(lastwaschecked);
 
 let is_mouse_on_buttonlist = false;

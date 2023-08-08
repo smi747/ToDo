@@ -1,4 +1,4 @@
-function tasks_load() {
+function loadTasks() {
   JSON.parse(localStorage.getItem("storage_tasks")).forEach(function (element, i, arr) {
     const div = document.createElement('div');
     div.className = "task";
