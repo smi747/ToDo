@@ -7,6 +7,6 @@ function saveTasks() {
   });
   localStorage.setItem("storage_tasks", JSON.stringify(tmp_tsk_list));
 
-  const n = lefted_quantity();
+  const n = getLeftedTasksNum();
   checkall.checked = !(tasks.length != n || tasks.length == 0);
 }

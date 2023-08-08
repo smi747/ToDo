@@ -29,7 +29,7 @@ function filt(x) {
     chckd_but.classList.remove("button_active");
     unchckd_but.classList.add("button_active");
   }
-  const n = lefted_quantity();
+  const n = getLeftedTasksNum();
   delete_but.style.display = (n == 0) ? "none" : "block";
   counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
   

@@ -11,7 +11,7 @@ function loadTasks() {
     task_list.appendChild(div);
   });
 
-  const n = lefted_quantity();
+  const n = getLeftedTasksNum();
   checkall.checked = !(tasks.length != n || tasks.length == 0);
 
   counter.innerText = "Невыполненных: " + (tasks.length-n).toString();
