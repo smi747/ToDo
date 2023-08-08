@@ -1,4 +1,4 @@
-function new_task() {
+function createTask() {
   if (inp.value == "") {
     return;
   }

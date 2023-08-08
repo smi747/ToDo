@@ -22,9 +22,9 @@ buttonlist.addEventListener('mouseleave', function(event){
 
 inp.addEventListener("keyup", function(event) {
   if (event.key === "Enter") {
-    new_task();
+    createTask();
   }
 });
 inp.addEventListener("focusout", function() {
-  (is_mouse_on_buttonlist) ? inp.focus() : new_task();
+  (is_mouse_on_buttonlist) ? inp.focus() : createTask();
 });
