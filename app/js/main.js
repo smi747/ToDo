@@ -9,9 +9,6 @@ if (localStorage.getItem("storage_tasks") == null) {
   localStorage.setItem("storage_tasks", JSON.stringify([]));
 }
 
-loadTasks();
-filterTasks(lastFilterValue);
-
 let isMouseOnButtonlist = false;
 buttonlist.addEventListener('mouseover', function(event){
   isMouseOnButtonlist = true;
@@ -28,3 +25,6 @@ inp.addEventListener("keyup", function(event) {
 inp.addEventListener("focusout", function() {
   (isMouseOnButtonlist) ? inp.focus() : createTask();
 });
+
+loadTasks();
+filterTasks(lastFilterValue);
