@@ -9,6 +9,12 @@ const selectCheckedButton = document.getElementById('chckd_but');
 const selectUncheckedButton = document.getElementById('unchckd_but');
 const checkAll = document.getElementById('checkall');
 
+checkAll.addEventListener("click", () => {checkAllTasks()});
+selectAllButton.addEventListener("click", () => {filterTasks('all')});
+selectCheckedButton.addEventListener("click", () => {filterTasks('chckd')});
+selectUncheckedButton.addEventListener("click", () => {filterTasks('unchckd')});
+deleteButton.addEventListener("click", () => {deleteCompletedTasks()});
+
 let lastFilterValue = "all";
 if (localStorage.getItem('storage_filter') !== null) {
   lastFilterValue = JSON.parse(localStorage.getItem('storage_filter'));
